@@ -35,13 +35,16 @@ export default function SignupCard() {
   const setUser = useResetRecoilState(userAtom);
   const handleSignUp = async () => {
     try {
-      const res = await fetch("/api/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(inputs),
-      });
+      const res = await fetch(
+        "https://web-squad-server.vercel.app:3000/api/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(inputs),
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (data.error) {
