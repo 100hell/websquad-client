@@ -37,7 +37,7 @@ export default function SignupCard() {
     try {
 
       const res = await fetch(
-        "https://web-squad-server.vercel.app:3000/api/users/signup",
+        "https://web-squad-server.vercel.app/api/users/signup",
         {
           method: "POST",
           headers: {
