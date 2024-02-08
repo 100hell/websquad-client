@@ -56,12 +56,15 @@ const ActionLogo = ({ post, postPage }) => {
       return;
     }
     try {
-      const res = await fetch(`/api/posts/like/${post._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/posts/like/${post._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");
@@ -101,13 +104,16 @@ const ActionLogo = ({ post, postPage }) => {
     }
     setIsReplying(true);
     try {
-      const res = await fetch(`/api/posts/reply/${post._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ text: reply }),
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/posts/reply/${post._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ text: reply }),
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");
@@ -144,7 +150,9 @@ const ActionLogo = ({ post, postPage }) => {
     onLikeOpen();
     const getPostLikeprofile = async (user) => {
       try {
-        const res = await fetch(`/api/users/profile/${user}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/users/profile/${user}`
+        );
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");

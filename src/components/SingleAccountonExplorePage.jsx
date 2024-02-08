@@ -29,12 +29,15 @@ export const SingleAccountonExplorePage = ({ exploreUser }) => {
         return;
       }
       setFollowUserLoading(true);
-      const res = await fetch(`/api/users/follow/${exploreUser._id}`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/users/follow/${exploreUser._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");

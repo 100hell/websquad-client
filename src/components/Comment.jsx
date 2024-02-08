@@ -21,7 +21,7 @@ const Comment = ({ reply, post }) => {
         return;
       setDeletingReply(true);
       const res = await fetch(
-        `/api/posts/deleteReply/${post._id}/${reply._id}`,
+        `https://web-squad-server.vercel.app/api/posts/deleteReply/${post._id}/${reply._id}`,
         {
           method: "DELETE",
         }

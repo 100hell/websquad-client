@@ -19,7 +19,9 @@ const SinglePost = ({ post, userId }) => {
   useEffect(() => {
     const getUserById = async () => {
       try {
-        const res = await fetch(`/api/users/profile/${userId}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/users/profile/${userId}`
+        );
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");
@@ -41,9 +43,12 @@ const SinglePost = ({ post, userId }) => {
     try {
       e.preventDefault();
       if (!window.confirm("Are you sure you want to delete this post")) return;
-      const res = await fetch(`/api/posts/${post._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/posts/${post._id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");

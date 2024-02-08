@@ -41,7 +41,9 @@ const PostPage = () => {
     setPosts([]);
     const getPost = async () => {
       try {
-        const res = await fetch(`/api/posts/${pid}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/posts/${pid}`
+        );
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");
@@ -68,13 +70,16 @@ const PostPage = () => {
     }
     setIsReplying(true);
     try {
-      const res = await fetch(`/api/posts/reply/${currentPost._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ text: reply }),
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/posts/reply/${currentPost._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ text: reply }),
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");
@@ -102,9 +107,12 @@ const PostPage = () => {
     try {
       e.preventDefault();
       if (!window.confirm("Are you sure you want to delete this post")) return;
-      const res = await fetch(`/api/posts/${currentPost._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/posts/${currentPost._id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");

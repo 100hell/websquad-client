@@ -11,7 +11,9 @@ export const useGetUserProfile = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`/api/users/profile/${username}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/users/profile/${username}`
+        );
         const data = await res.json();
         // console.log(data);
         if (data.error) {

@@ -55,17 +55,20 @@ export const CreatePost = () => {
   const handleCreatePost = async () => {
     try {
       setIsPosting(true);
-      const res = await fetch("/api/posts/create", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          postedBy: user._id,
-          text: postText,
-          img: imgurl,
-        }),
-      });
+      const res = await fetch(
+        "https://web-squad-server.vercel.app/api/posts/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            postedBy: user._id,
+            text: postText,
+            img: imgurl,
+          }),
+        }
+      );
 
       const data = await res.json();
       if (data.error) {

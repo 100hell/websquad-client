@@ -37,13 +37,16 @@ export default function UpdateUserPage() {
     e.preventDefault();
     setUpdateLoading(true);
     try {
-      const res = await fetch(`/api/users/update/${user._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...inputs, profilePic: imgurl }),
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/users/update/${user._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...inputs, profilePic: imgurl }),
+        }
+      );
       const data = await res.json();
       // console.log(data);
       if (data.error) {
