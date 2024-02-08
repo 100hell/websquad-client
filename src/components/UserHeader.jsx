@@ -72,12 +72,15 @@ const UserHeader = ({ user }) => {
         return;
       }
       setUpdating(true);
-      const res = await fetch(`/api/users/follow/${user._id}`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/users/follow/${user._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");
@@ -104,7 +107,9 @@ const UserHeader = ({ user }) => {
     setUserFollowers([]);
     const getUserFollowers = async (follower) => {
       try {
-        const res = await fetch(`/api/users/profile/${follower}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/users/profile/${follower}`
+        );
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");

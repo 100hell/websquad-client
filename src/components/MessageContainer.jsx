@@ -62,7 +62,9 @@ const MessageContainer = () => {
       setMassages([]);
       try {
         if (selectedConversation.mock) return;
-        const res = await fetch(`/api/messages/${selectedConversation.userId}`);
+        const res = await fetch(
+          `https://web-squad-server.vercel.app/api/messages/${selectedConversation.userId}`
+        );
         const data = await res.json();
         setMassages(data);
       } catch (error) {

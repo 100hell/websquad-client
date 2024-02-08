@@ -36,7 +36,9 @@ export const Chatpage = () => {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await fetch("/api/messages/conversations");
+        const res = await fetch(
+          "https://web-squad-server.vercel.app/api/messages/conversations"
+        );
         const data = await res.json();
         if (data.error) {
           showToast("error", data.error, "error");
@@ -58,7 +60,9 @@ export const Chatpage = () => {
     e.preventDefault();
     setSearchingUser(true);
     try {
-      const res = await fetch(`/api/users/profile/${searchText}`);
+      const res = await fetch(
+        `https://web-squad-server.vercel.app/api/users/profile/${searchText}`
+      );
       const searchedUser = await res.json();
       if (searchedUser.error) {
         showToast("error", searchedUser.error, "error");

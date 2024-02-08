@@ -16,7 +16,9 @@ export const ExplorePage = () => {
     const getUser = async () => {
       setLoadingExploreusers(true);
       setExploreusers([]);
-      const res = await fetch("/api/users/explore");
+      const res = await fetch(
+        "https://web-squad-server.vercel.app/api/users/explore"
+      );
       const data = await res.json();
       if (data.error) {
         showToast("Error", data.error, "error");

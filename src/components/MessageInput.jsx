@@ -31,16 +31,19 @@ export const MessageInput = ({ setMassages }) => {
     if (!messageText) return;
     // console.log(messageText);
     try {
-      const res = await fetch("api/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: messageText,
-          recipientId: selectedConversation.userId,
-        }),
-      });
+      const res = await fetch(
+        "https://web-squad-server.vercel.app/api/messages",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: messageText,
+            recipientId: selectedConversation.userId,
+          }),
+        }
+      );
       const data = await res.json();
       // console.log("msg data: ", data);
       if (data.error) {

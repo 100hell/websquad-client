@@ -35,7 +35,6 @@ export default function SignupCard() {
   const setUser = useResetRecoilState(userAtom);
   const handleSignUp = async () => {
     try {
-
       const res = await fetch(
         "https://web-squad-server.vercel.app/api/users/signup",
         {
